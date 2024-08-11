@@ -27,9 +27,9 @@ export default function LogInWithEmail({navigation}) {
         <Image style={styles.logo} source={require("../../assets/logo.png")} />
       </View>
 
+      {/* input filed for email or phone  */}
       <View style={styles.container1}>
         <Text style={styles.header}>Sign in</Text>
-
         <View style={styles.inputTextWrapper}>
           <TextInput
             placeholder="email or phone"
@@ -40,11 +40,9 @@ export default function LogInWithEmail({navigation}) {
             onChangeText={this.onChangeInputHandler}
             ref={this.emailInputRef}
           />
-
-
-
         </View>
 
+      {/* input filed for Password */}
         <View style={styles.inputTextWrapper}>
           <TextInput
             placeholder="Password"
@@ -56,55 +54,55 @@ export default function LogInWithEmail({navigation}) {
             onChangeText={this.onChangeInputHandler}
             ref={this.passwordInputRef}
           />
-
-
-
         </View>
 
+        {/* login button */}
         <View style={styles.btnContainer}>
           <Button title="Log in" color="#FF564F" onPress={this.submitPressed} />
         </View>
 
+        {/* login through otp button */}
         <View>
           <Text style={styles.OptText}>Login through OTP</Text>
         </View>
 
+        {/* line for the separate the contiune with options */}
         <View style={styles.hr}></View>
 
 
-
+        {/* or continue with text */}
         <View style={styles.continueTextwapper}>
           <Text style={styles.continueText}>or continue with</Text>
         </View>
 
+        {/* google img for contiune with option */}
         <View style={styles.ContinueWithWapper}>
           <View style={styles.logosWapper}>
             <Image style={styles.ContinueGoogleLogo} source={require("../../assets/Google-Logo.png")} />
           </View>
+            {/* facebook img for contiune with option */}
           <View style={styles.logosWapper}>
             <Image style={styles.ContinueFacebookLogo} source={require("../../assets/facebook-logo.png")} />
           </View>
+            {/* apple img for contiune with option */}
           <View style={styles.logosWapper}>
             <Image style={styles.continueAppleLogo} source={require("../../assets/apple-logo.png")} />
           </View>
         </View>
 
-        {/* <View>
-        <Text style={styles.laterText}>I’ll do it later</Text>
-      </View> */}
-
+        {/* Don’t have an account text */}
         <View>
           <View>
             <Text style={styles.AlreadyAccount}>Don’t have an account?</Text>
           </View>
 
+          {/* sign up text with navigation */}
           <TouchableOpacity style={styles.signin} onPress={() => navigation.navigate("LogInWithPhone")}>
             <View>
               <Text style={styles.signin} >Sign up</Text>
             </View>
           </TouchableOpacity>
         </View>
-
       </View>
 
 

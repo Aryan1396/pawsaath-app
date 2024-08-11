@@ -31,20 +31,19 @@ const Home = ({ navigation }) => {
         {/* get start button */}
         <TouchableOpacity style={style.appButtonContainer} onPress={() => navigation.navigate("LogInWithEmail")}>
           <View style={{ color: "red" }}>
-          <Text style={style.appButtonText} >Get start</Text>
+            <Text style={style.appButtonText} >Get start</Text>
           </View>
         </TouchableOpacity>
+
         {/* sign in button */}
         <View>
           <View><Text style={style.end} >Already have an account? </Text></View>
           <TouchableOpacity style={style.signin} onPress={() => navigation.navigate("LogInWithPhone")}>
-          <View>
-          <Text style={style.signin} >Get start</Text>
-          </View>
-        </TouchableOpacity>
+            <View>
+              <Text style={style.signin} >Get start</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-
-
       </SafeAreaView>
     </>
   )
@@ -122,12 +121,12 @@ const style = StyleSheet.create({
 
   },
   signin: {
-   fontSize:16,
-   top:354,
-   zIndex:99,
-   color:"red",
-   left:138,
-   fontWeight:"700"
+    fontSize: 16,
+    top: 354,
+    zIndex: 99,
+    color: "red",
+    left: 138,
+    fontWeight: "700"
   }
 
 })

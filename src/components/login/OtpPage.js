@@ -20,10 +20,12 @@ const Home = () => {
                     <Image style={style.logo} source={require("../../assets/logo.png")} />
                 </View>
 
+                {/* Confirm your Phone Number text */}
                 <View>
                     <Text style={style.ConfirmText}>Confirm your Phone Number</Text>
                 </View>
 
+                {/* Confirm text with the number */}
                 <View>
                     <Text style={style.OtpSent}>
                         Enter the OTP sent to you
@@ -36,7 +38,7 @@ const Home = () => {
                     </Text>
                 </View>
 
-
+                {/* logic for first box of otp */}
                 <View style = {style.optWapper}>
                 <TextInput style = {style.otpinput} 
                 ref={OI1}
@@ -52,6 +54,7 @@ const Home = () => {
                 }}
                 />
                
+               {/* logic for second box of otp */}
                 <TextInput style = {style.otpinput} 
                 ref={OI2} 
                 keyboardType='number-pad' 
@@ -65,6 +68,7 @@ const Home = () => {
                        
                 }}/>
                
+               {/* logic for third box of otp */}
                 <TextInput style = {style.otpinput} 
                 ref={OI3} 
                 keyboardType='number-pad' 
@@ -77,6 +81,7 @@ const Home = () => {
                     }
                 }}/>
                
+               {/* logic for fourth box of otp */}
                 <TextInput style = {style.otpinput} 
                 ref={OI4} 
                 keyboardType='number-pad' 
@@ -91,15 +96,18 @@ const Home = () => {
                 />
                 </View>
 
+                {/* Remaining Time text */}
                 <View><Text style={style.RemainingTime}>Remaining Time : 120</Text></View>
                 <View style={style.btnContainer}>
                     <Button title="Submit" color="#FF564F" onPress={this.submitPressed} />
                 </View>
 
+                {/* Haven’t received an SMS text  */}
                 <View>
                     <Text style={style.NotReceive}>Haven’t received an SMS</Text>
                 </View>
 
+                {/* Resend button / text */}
                 <TouchableOpacity>
                     <Text style={style.Resend}>Resend</Text>
                 </TouchableOpacity>

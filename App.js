@@ -16,10 +16,10 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Home" component={Home} />
+          {/* <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="LogInWithEmail" component={LogInWithEmail} />
-          <Stack.Screen name="LogInWithPhone" component={LogInWithPhone} />
-          <Stack.Screen name="OtpPage" component={OtpPage} />
+          <Stack.Screen name="LogInWithPhone" component={LogInWithPhone} /> */}
+          {/* <Stack.Screen name="OtpPage" component={OtpPage} /> */}
           <Stack.Screen name="FirstProfile" component={FirstProfile} />
         </Stack.Navigator>
       </NavigationContainer>

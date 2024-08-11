@@ -1,83 +1,105 @@
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from 'react-native-safe-area-context'
-import DatePicker from "@react-native-community/datetimepicker";
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, Modal } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import DatePicker from '@react-native-community/datetimepicker';
 
 const FirstProfile = () => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
-  const [mode, setMode] = useState("date");
   const [selectedElements, setSelectedElements] = useState([]);
-  const [choice, setChoice] = useState('');
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(false);
+    setDate(currentDate);
+  };
+
+  const showMode = (mode) => {
+    setShow(true);
+  };
+
+  const handleSelect = (option) => {
+    setSelectedElements((prevSelected) =>
+      prevSelected.includes(option)
+        ? prevSelected.filter((item) => item !== option)
+        : [...prevSelected, option]
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       {/* Logo */}
       <View>
-        <Image style={styles.logo} source={require("../../assets/logo.png")} />
+        <Image style={styles.logo} source={require('../../assets/logo.png')} />
       </View>
 
+      {/* Welcome text */}
       <View>
         <Text style={styles.WelcomeNote}>Hello Sandesh,</Text>
         <Text style={styles.WelcomeNote}>Let's create your profile first</Text>
       </View>
 
+      {/* Default image for upload photo */}
       <View>
-        <Image style={styles.PhotoPutLogo} source={require("../../assets/logoForProfile.jpg")} />
+        <Image style={styles.PhotoPutLogo} source={require('../../assets/logoForProfile.jpg')} />
       </View>
 
+      {/* Input field for email */}
       <View>
-        <TouchableOpacity >
-             <TextInput
-         style={styles.otpInput} placeholder="Your Email Address" />
-        </TouchableOpacity>
-     
+        <TextInput
+          style={styles.otpInput}
+          placeholder="Your Email Address"
+          keyboardType="email-address"
+        />
       </View>
 
+      {/* Input field for date picker */}
       <View style={styles.dateContainer}>
-        <TouchableOpacity onPress={() => showMode("date")}>
+        <TouchableOpacity onPress={() => showMode('date')}>
           <Text style={styles.date}>{date.toLocaleDateString()}</Text>
         </TouchableOpacity>
         {show && (
           <DatePicker
             value={date}
-            mode={mode}
+            mode="date"
             is24Hour={true}
+            display="default"
             onChange={onChange}
           />
         )}
-        <TouchableOpacity onPress={() => showMode("date")}>
-          <Image style={styles.dateLogo} source={require("../../assets/date_icon.png")} />
+        <TouchableOpacity onPress={() => showMode('date')}>
+          <Image style={styles.dateLogo} source={require('../../assets/date_icon.png')} />
         </TouchableOpacity>
       </View>
 
+      {/* Multiple selecting options */}
       <View>
-        <Text style={styles.iam}>I am a </Text>
+        <Text style={styles.iam}>I am a</Text>
         <View style={styles.optionsContainer}>
-          {["Pet Parent", "Pet Boarder", "Pet Sitter", "Groomer", "Pet Lover", "Pet Walker", "Pet Doctor", "Trainer"].map((option, index) => (
+          {['Pet Parent', 'Pet Boarder', 'Pet Sitter', 'Groomer', 'Pet Lover', 'Pet Walker', 'Pet Doctor', 'Trainer'].map((option) => (
             <TouchableOpacity
               key={option}
               style={[
                 styles.option,
-                selectedElements.includes(option) && styles.selectedOption
+                selectedElements.includes(option) && styles.selectedOption,
               ]}
-              onPress={() => handleClick(option)}
+              onPress={() => handleSelect(option)}
             >
-              <Text>{option}</Text>
+              <Text style={styles.optionText}>{option}</Text>
             </TouchableOpacity>
           ))}
         </View>
       </View>
 
-      <View>
-        <TouchableOpacity style={{width:142, height:56, alignSelf:"center"}}>
-          <Text style={styles.next}>Next</Text>
-        </TouchableOpacity>
-      </View>
+      {/* Next button */}
+          <View>
+            <TouchableOpacity>
+              <Text style = {styles.next}>Next</Text>
+            </TouchableOpacity>
+          </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -112,7 +134,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 18,
     top: 230,
-    alignSelf:"center"
+    alignSelf:"center",
+    zIndex:1
   },
   dateContainer: {
     alignItems: "center",
@@ -156,7 +179,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   selectedOption: {
-    backgroundColor: '#FF564F'
+    backgroundColor: '#FF564F',
   },
   next:{
     width:142,
@@ -169,7 +192,7 @@ const styles = StyleSheet.create({
     fontSize:22,
     padding:10,
     paddingLeft:40,
-    top:300,
+   top:300
   }
 });
 
