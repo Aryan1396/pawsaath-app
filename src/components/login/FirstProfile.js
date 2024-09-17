@@ -181,6 +181,9 @@ const styles = StyleSheet.create({
   selectedOption: {
     backgroundColor: '#FF564F',
   },
+  selectedText: {
+    color: '#fff',
+},
   next:{
     width:142,
     height:56,
